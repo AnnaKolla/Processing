@@ -42,7 +42,7 @@ void setup() {
 size(1280, 720, OPENGL);
 // initialize SimpleOpenNI object
 context = new SimpleOpenNI(this);
-if (!context.enableScene()) {
+if (!context.enableUser()) {
 // if context.enableScene() returns false
 // then the Kinect is not working correctly
 // make sure the green light is blinking
@@ -72,7 +72,8 @@ rect(0, 0, width, height);
 // update the SimpleOpenNI object
 context.update();
 // put the image into a PImage
-cam = context.sceneImage().get();
+//cam = context.sceneImage().get();
+cam = context.userImage().get();
 // copy the image into the smaller blob image
 blobs.copy(cam, 0, 0, cam.width, cam.height, 0, 0, blobs.width, blobs.height);
 // blur the blob image
@@ -127,8 +128,4 @@ for (int i=0; i<0;i++){ flow[i].col = colorPalette[int(random(1, colorPalette.le
 }
 }
 }
-
-
-
-
 
